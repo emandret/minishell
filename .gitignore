@@ -1,0 +1,7 @@
+.DS_Store
+a.out
+*.o
+*.a
+*.dSYM/
+minishell
+cor
