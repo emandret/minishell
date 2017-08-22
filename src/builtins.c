@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 01:45:26 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 08:12:43 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 09:02:26 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static void	check(char *btin, t_code code)
 		sh_error(btin, "not enough arguments");
 	else if (code == C_2MANY)
 		sh_error(btin, "too many arguments");
+	else if (code == C_NOVAL)
+		sh_error(btin, "value is not defined");
 }
 
 void		**sh_init_builtins(void)
