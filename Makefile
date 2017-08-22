@@ -6,15 +6,15 @@
 #    By: emandret <emandret@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/04 12:34:12 by emandret          #+#    #+#              #
-#    Updated: 2017/08/21 22:59:52 by emandret         ###   ########.fr        #
+#    Updated: 2017/08/22 05:14:11 by emandret         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
 SRCDIR = src
-SRC = builtins.c cd.c echo.c env.c exec.c exit.c gnl.c input.c main.c setenv.c \
-unsetenv.c utils.c
+SRC = builtins.c cd.c echo.c env.c exit.c gnl.c main.c setenv.c utils.c \
+unsetenv.c
 
 OBJDIR = obj
 OBJ = $(SRC:.c=.o)
