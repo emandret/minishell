@@ -6,12 +6,12 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 11:23:11 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/21 23:04:49 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 07:52:39 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GNL_H
+# define GNL_H
 
 # define GNL_BUFF_SIZE 32
 

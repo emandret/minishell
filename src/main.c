@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:39 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 07:49:09 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 07:53:25 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static t_bool	do_exec(char **env, char **paths, char **args)
 	return (TRUE);
 }
 
-void	do_prompt(char **env)
+static void		do_prompt(char **env)
 {
 	char	*user;
 	char	cwd[4096];
@@ -83,7 +83,7 @@ void	do_prompt(char **env)
 	ft_printf("%s:%s $ ", user, ft_strrchr(cwd, '/'));
 }
 
-int			main(int ac, char **av, char **ev)
+int				main(int ac, char **av, char **ev)
 {
 	void	**btins;
 	char	**paths;

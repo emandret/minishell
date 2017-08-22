@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:39 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 05:58:15 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 07:51:57 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static int	size(char **tab)
 	unsigned int	i;
 
 	i = 0;
-	while (tab[i++]);
+	while (tab[i])
+		i++;
 	return (i);
 }
 

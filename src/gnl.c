@@ -6,19 +6,11 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/12 11:23:11 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/21 23:05:25 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 07:53:47 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/gnl.h"
-
-/*
-** Utils functions
-*/
-static t_bool	has_newline(t_this *this, char **line, char **concat);
-static char		*cut_after_endl(char *buffer, char **concat);
-static ssize_t	read_until_endl(t_this *this, char **line);
-static t_this	*load_new_fd(const int fd, t_this *first);
 
 static t_bool	has_newline(t_this *this, char **line, char **concat)
 {
