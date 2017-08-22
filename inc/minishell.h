@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:47 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 05:57:22 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 08:43:28 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ t_bool			sh_call_builtins(void **btins, char ***env, char **args);
 */
 void			sh_error(char *name, char *error);
 void			sh_tab_free(char **tab);
-void			sh_tab_swap(char ***t1, char ***t2);
 char			**sh_get_paths(char **env);
 
 #endif

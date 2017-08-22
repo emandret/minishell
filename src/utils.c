@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:39 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 05:53:59 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 08:43:17 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,6 @@ void	sh_tab_free(char **tab)
 	while (tab[i])
 		ft_memdel((void**)&tab[i++]);
 	ft_memdel((void**)&tab);
-}
-
-void	sh_tab_swap(char ***t1, char ***t2)
-{
-	char	**tmp;
-
-	tmp = *t1;
-	*t1 = *t2;
-	*t2 = tmp;
 }
 
 char	**sh_get_paths(char **env)
