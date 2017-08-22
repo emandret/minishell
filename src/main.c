@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:39 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 05:16:14 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 07:49:09 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char		**get_args(void)
 	if (get_next_line(0, &input))
 	{
 		args = NULL;
-		if (*input && !ft_isblanks(*input))
+		if (*input)
 			args = ft_split_whitespaces(input);
 		ft_memdel((void**)&input);
 		return (args);
@@ -97,7 +97,7 @@ int			main(int ac, char **av, char **ev)
 	while (1)
 	{
 		do_prompt(ev);
-		if ((args = get_args()))
+		if ((args = get_args()) && *args)
 		{
 			if (sh_call_builtins(btins, &ev, args))
 				continue ;

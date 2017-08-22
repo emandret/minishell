@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 01:45:26 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 05:21:07 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 07:48:07 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_bool		sh_call_builtins(void **btins, char ***env, char **args)
 	i = 0;
 	while (btins[i] && btins[i + 1])
 	{
-		if (!ft_strcmp(args[0], (char*)btins[i]))
+		if (ft_strequ(args[0], (char*)btins[i]))
 		{
 			check((char*)btins[i], ((t_builtin)btins[i + 1])(env, &args[1]));
 			return (TRUE);
