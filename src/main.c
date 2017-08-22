@@ -6,17 +6,19 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:39 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 07:53:25 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 17:23:03 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minishell.h"
 
-static char		**get_args(void)
+static char		**get_args(char **old_args)
 {
 	char	*input;
 	char	**args;
 
+	if (old_args)
+		ft_memdel((void**)&old_args);
 	if (get_next_line(0, &input))
 	{
 		args = NULL;
@@ -85,19 +87,20 @@ static void		do_prompt(char **env)
 
 int				main(int ac, char **av, char **ev)
 {
-	void	**btins;
-	char	**paths;
 	char	**args;
+	char	**paths;
+	void	**btins;
 
 	(void)ac;
 	(void)av;
 	ev = ft_tabdup(ev);
+	args = NULL;
 	paths = sh_get_paths(ev);
 	btins = sh_init_builtins();
 	while (1)
 	{
 		do_prompt(ev);
-		if ((args = get_args()) && *args)
+		if ((args = get_args(args)) && *args)
 		{
 			if (sh_call_builtins(btins, &ev, args))
 				continue ;
@@ -105,5 +108,8 @@ int				main(int ac, char **av, char **ev)
 				return (-1);
 		}
 	}
+	ft_tabfree((void**)&ev);
+	ft_tabfree((void**)&paths);
+	ft_tabfree((void**)&btins);
 	return (0);
 }

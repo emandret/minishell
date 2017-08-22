@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:39 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 08:43:42 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 16:59:28 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ t_code		sh_builtin_unsetenv(char ***env, char **args)
 	}
 	new[j] = NULL;
 	ft_tabswap(env, &new);
-	sh_tab_free(new);
+	ft_tabfree((void**)&new);
 	return (C_OK);
 }

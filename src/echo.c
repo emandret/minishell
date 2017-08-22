@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:39 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 07:50:26 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 17:08:00 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ t_code	sh_builtin_echo(char ***env, char **args)
 			ft_putchar(' ');
 		i++;
 	}
+	ft_putchar('\n');
 	return (C_OK);
 }
