@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 01:45:26 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 07:48:07 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/22 08:12:43 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		**sh_init_builtins(void)
 	void			**btins;
 	unsigned int	i;
 
-	if (!(btins = ft_memalloc(sizeof(void*) * (BUILTINS * 2))))
+	if (!(btins = ft_memalloc(sizeof(void*) * (BUILTINS * 2 + 2))))
 		return (NULL);
 	i = 0;
 	set(btins, &i, "echo", &sh_builtin_echo);
@@ -46,7 +46,7 @@ void		**sh_init_builtins(void)
 	set(btins, &i, "unsetenv", &sh_builtin_unsetenv);
 	set(btins, &i, "env", &sh_builtin_env);
 	set(btins, &i, "exit", &sh_builtin_exit);
-	btins[++i] = NULL;
+	set(btins, &i, NULL, NULL);
 	return (btins);
 }
 

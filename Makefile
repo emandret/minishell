@@ -6,7 +6,7 @@
 #    By: emandret <emandret@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/04 12:34:12 by emandret          #+#    #+#              #
-#    Updated: 2017/08/22 05:14:11 by emandret         ###   ########.fr        #
+#    Updated: 2017/08/22 08:12:54 by emandret         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ = $(SRC:.c=.o)
 
 LIB = libft.a
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
 all: $(LIB) $(OBJDIR) $(NAME)
 
