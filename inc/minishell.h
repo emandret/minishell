@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:47 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 16:59:05 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/23 20:25:40 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ t_bool			sh_call_builtins(void **btins, char ***env, char **args);
 ** utils.c
 */
 void			sh_error(char *name, char *error);
-char			**sh_get_paths(char **env);
+char			**sh_get_paths(char **env, char **old_paths);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:39 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 05:48:13 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/23 21:01:49 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,35 @@ static t_bool	handle_chdir(char ***env, char *dir)
 	return (FALSE);
 }
 
-static void		handle_shortcuts(char ***env, char ***args)
+static char		*handle_shortcuts(char ***env, char **args)
 {
 	char	*prev;
 	char	*home;
 
-	if ('-' == ***args && (prev = ft_getenv(*env, "OLDPWD")))
+	if ((home = ft_getenv(*env, "HOME")))
+	{
+		if (!*args)
+			return (home);
+		if (ft_strchr(*args, '~'))
+			return (ft_strrep(*args, "~", home));
+	}
+	if ((prev = ft_getenv(*env, "OLDPWD")) && *args && '-' == **args)
 	{
 		ft_putendl(prev);
-		**args = prev;
+		return (prev);
 	}
-	if (ft_strchr(**args, '~') && (home = ft_getenv(*env, "HOME")))
-		**args = ft_strrep(**args, "~", home);
+	return (NULL);
 }
 
 t_code			sh_builtin_cd(char ***env, char **args)
 {
-	if (!*args)
-		return (C_NOARG);
+	char	*dir;
+
 	if (args[1])
 		return (C_2MANY);
-	handle_shortcuts(env, &args);
-	if (handle_chdir(env, *args))
+	if (!(dir = handle_shortcuts(env, args)))
+		dir = *args;
+	if (handle_chdir(env, dir))
 		return (C_OK);
 	return (C_NODIR);
 }

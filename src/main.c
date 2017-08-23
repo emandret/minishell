@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:39 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/22 17:23:03 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/23 20:46:38 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char		**get_args(char **old_args)
 	char	**args;
 
 	if (old_args)
-		ft_memdel((void**)&old_args);
+		ft_tabfree((void**)old_args);
 	if (get_next_line(0, &input))
 	{
 		args = NULL;
@@ -95,21 +95,21 @@ int				main(int ac, char **av, char **ev)
 	(void)av;
 	ev = ft_tabdup(ev);
 	args = NULL;
-	paths = sh_get_paths(ev);
+	paths = NULL;
 	btins = sh_init_builtins();
 	while (1)
 	{
 		do_prompt(ev);
 		if ((args = get_args(args)) && *args)
 		{
+			paths = sh_get_paths(ev, paths);
 			if (sh_call_builtins(btins, &ev, args))
 				continue ;
 			if (!do_exec(ev, paths, args))
 				return (-1);
 		}
 	}
-	ft_tabfree((void**)&ev);
-	ft_tabfree((void**)&paths);
-	ft_tabfree((void**)&btins);
+	ft_tabfree((void**)ev);
+	ft_tabfree((void**)btins);
 	return (0);
 }
