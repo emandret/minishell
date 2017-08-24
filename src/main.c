@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:39 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/23 20:46:38 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/24 16:27:51 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,18 @@ static char		**get_args(char **old_args)
 
 	if (old_args)
 		ft_tabfree((void**)old_args);
-	if (get_next_line(0, &input))
+	if (get_next_line(STDIN_FILENO, &input) > 0)
 	{
 		args = NULL;
 		if (*input)
 			args = ft_split_whitespaces(input);
 		ft_memdel((void**)&input);
 		return (args);
+	}
+	else
+	{
+		ft_putendl("exit");
+		exit(EXIT_SUCCESS);
 	}
 	return (NULL);
 }
