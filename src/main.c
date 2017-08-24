@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:39 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/24 16:27:51 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/24 20:17:42 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static char		*get_expath(char **paths, char *bin)
 		expath = ft_getpath(paths[i], bin);
 		if (!access(expath, F_OK | X_OK))
 			return (expath);
+		ft_memdel((void**)&expath);
 		i++;
 	}
 	return (NULL);
@@ -76,6 +77,7 @@ static t_bool	do_exec(char **env, char **paths, char **args)
 		execve(expath, args, env);
 	if (child > 0)
 		wait(&child);
+	ft_memdel((void**)&expath);
 	return (TRUE);
 }
 
@@ -114,7 +116,5 @@ int				main(int ac, char **av, char **ev)
 				return (-1);
 		}
 	}
-	ft_tabfree((void**)ev);
-	ft_tabfree((void**)btins);
 	return (0);
 }
