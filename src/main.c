@@ -6,7 +6,7 @@
 /*   By: emandret <emandret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/21 23:02:39 by emandret          #+#    #+#             */
-/*   Updated: 2017/08/24 20:17:42 by emandret         ###   ########.fr       */
+/*   Updated: 2017/08/26 19:31:15 by emandret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char		*get_expath(char **paths, char *bin)
 	if (!paths)
 		return (NULL);
 	if (!access(bin, F_OK | X_OK))
-		return (bin);
+		return (ft_strdup(bin));
 	i = 0;
 	while (paths[i])
 	{
