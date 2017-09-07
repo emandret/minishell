@@ -6,7 +6,7 @@
 #    By: emandret <emandret@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/04 12:34:12 by emandret          #+#    #+#              #
-#    Updated: 2017/08/22 08:12:54 by emandret         ###   ########.fr        #
+#    Updated: 2017/09/07 03:24:41 by emandret         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,20 +19,21 @@ unsetenv.c
 OBJDIR = obj
 OBJ = $(SRC:.c=.o)
 
-LIB = libft.a
+LIBDIR = libft
+LIB = ftprintf
 
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 
-all: $(LIB) $(OBJDIR) $(NAME)
+all: $(LIBDIR)/lib$(LIB).a $(OBJDIR) $(NAME)
 
-$(LIB):
-	@make -C libft
+$(LIBDIR)/lib$(LIB).a:
+	@make -C $(LIBDIR)
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
 
 $(NAME): $(addprefix $(OBJDIR)/, $(OBJ))
-	@$(CC) $(CFLAGS) $(addprefix $(SRCDIR)/, $(SRC)) -o $(NAME) -L libft -l ftprintf
+	@$(CC) $(CFLAGS) $(addprefix $(OBJDIR)/, $(OBJ)) -o $(NAME) -L $(LIBDIR) -l $(LIB)
 	@tput setaf 77 ; echo [DONE]
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
@@ -41,11 +42,11 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 
 clean:
 	@rm -rf $(OBJDIR)
-	@make clean -C libft
+	@make clean -C $(LIBDIR)
 
 fclean: clean
 	@rm -rf $(NAME)
-	@make fclean -C libft
+	@make fclean -C $(LIBDIR)
 
 re: fclean all
 
